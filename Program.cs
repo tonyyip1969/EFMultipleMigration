@@ -1,6 +1,7 @@
 using EFMultipleMigration;
 using EFMultipleMigration.Databases;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Any;
 using Microsoft.OpenApi.Models;
 
@@ -13,6 +14,9 @@ switch (builder.Configuration.GetConnectionString("Provider"))
         break;
     case "Sqlite":
         builder.Services.AddDbContext<DataContext, SqliteDataContext>();
+        break;
+    case "Postgresql":
+        builder.Services.AddDbContext<DataContext, PostgresqlDataContext>();
         break;
 }
 
