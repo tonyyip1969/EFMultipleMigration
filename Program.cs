@@ -1,3 +1,5 @@
+// https://juldhais.net/multiple-database-provider-migrations-in-entity-framework-fae069ff5f11
+// https://github.com/juldhais/EFMultipleMigration
 using EFMultipleMigration;
 using EFMultipleMigration.Databases;
 using Microsoft.EntityFrameworkCore;

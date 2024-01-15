@@ -8,12 +8,12 @@ namespace EFMultipleMigration.Controllers;
 [Route("person")]
 public class PersonController(DataContext dataContext) : ControllerBase
 {
-    private readonly DataContext _dataContext = dataContext;
+    //private readonly DataContext _dataContext = dataContext;
 
     [HttpGet]
     public async Task<ActionResult<Person>> GetAll(CancellationToken ct)
     {
-        var persons = await _dataContext.Set<Person>().ToListAsync(ct);
+        var persons = await dataContext.Set<Person>().ToListAsync(ct);
         return Ok(persons);
     }
 
@@ -21,8 +21,8 @@ public class PersonController(DataContext dataContext) : ControllerBase
     public async Task<ActionResult<Person>> Create(Person person, CancellationToken ct)
     {
         person.Id = Guid.NewGuid();
-        _dataContext.Add(person);
-        await _dataContext.SaveChangesAsync(ct);
+        dataContext.Add(person);
+        await dataContext.SaveChangesAsync(ct);
         return Ok(person);
     }
 }
